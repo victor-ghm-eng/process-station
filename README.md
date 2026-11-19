@@ -6,7 +6,7 @@ Arduino UNO firmware handles control, a latched high-temperature alarm and local
 
 This is a personal portfolio project by Victor Gabriel Hernández Morera, 5th-year Industrial Electronics and Automation Engineering student at Universidad de La Laguna, Tenerife. The Arduino is a prototype controller, not a PLC; the SCADA side is built so that the controller can later be replaced by a Siemens S7-1500 without redesigning the HMI.
 
-Demo video: [YOUTUBE_URL](YOUTUBE_URL)
+Demo video: [Watch the demo on YouTube](https://youtu.be/0CmcolezmKc)
 
 Technical report (PDF): [docs/Process_Station_Report.pdf](docs/Process_Station_Report.pdf)
 
@@ -130,7 +130,7 @@ The Ignition device `ProcessStation` is Modbus TCP at 127.0.0.1:502 (unit ID 1, 
 
 A 2:40 English walkthrough of the architecture, the hardware, the gateway, the Ignition project and a live demo (setpoint change, AUTO/MANUAL, high-temperature alarm and acknowledgement):
 
-[YOUTUBE_URL](YOUTUBE_URL)
+[Watch the demo on YouTube](https://youtu.be/0CmcolezmKc)
 
 ## Technical report
 
