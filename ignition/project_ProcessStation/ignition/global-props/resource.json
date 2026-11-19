@@ -1,0 +1,16 @@
+{
+  "scope": "A",
+  "version": 1,
+  "restricted": false,
+  "overridable": true,
+  "files": [
+    "data.bin"
+  ],
+  "attributes": {
+    "lastModificationSignature": "5934c6520e406a8de3fabd64a475afff1d81d0bc9178d4383d40c6c89ffcd6bd",
+    "lastModification": {
+      "actor": "Victor Gabriel",
+      "timestamp": "2026-11-16T16:25:25Z"
+    }
+  }
+}

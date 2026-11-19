@@ -1,0 +1,337 @@
+{
+  "custom": {},
+  "params": {
+    "udtPath": "[default]ProcessStation/TT101"
+  },
+  "propConfig": {
+    "params.udtPath": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 595,
+      "width": 400
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Label"
+        },
+        "position": {
+          "height": 32,
+          "width": 354,
+          "x": 20,
+          "y": 12
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "expression": "\"Sensor: \" + {view.params.udtPath}"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_0"
+        },
+        "position": {
+          "height": 32,
+          "width": 359,
+          "x": 20,
+          "y": 52
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "expression": "\"Value: \" + numberFormat(tag({view.params.udtPath} + \"/Value\"), \"0.0\") + \" \" + tag({view.params.udtPath} + \"/Units\")"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_1"
+        },
+        "position": {
+          "height": 32,
+          "width": 359,
+          "x": 20,
+          "y": 92
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "expression": "\"Setpoint: \" + numberFormat(tag({view.params.udtPath} + \"/Setpoint\"), \"0.0\")"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_2"
+        },
+        "position": {
+          "height": 32,
+          "width": 359,
+          "x": 20,
+          "y": 132
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "expression": "\"High limit: \" + numberFormat(tag({view.params.udtPath} + \"/HighLimit\"), \"0.0\")"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "PowerChart"
+        },
+        "position": {
+          "height": 395,
+          "width": 360,
+          "x": 14,
+          "y": 172
+        },
+        "propConfig": {
+          "props.pens[0].data.source": {
+            "binding": {
+              "config": {
+                "expression": "\"histprov:Sample_SQLite_Database:/drv:ignition-desktop-3luhgqe:default:/tag:\" + lower(replace({view.params.udtPath}, \"[default]\", \"\")) + \"/value\""
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "axes": [
+            {
+              "color": "#757A7F",
+              "dataFormat": "0,0.##",
+              "grid": {
+                "color": "",
+                "dashArray": 0,
+                "opacity": 0.9,
+                "style": {
+                  "classes": ""
+                },
+                "visible": false
+              },
+              "label": {
+                "font": {
+                  "color": "#757A7F",
+                  "size": 10
+                },
+                "offset": 0,
+                "style": {
+                  "classes": ""
+                },
+                "text": "Temperature (ºC)"
+              },
+              "name": "Temp",
+              "position": "left",
+              "range": {
+                "auto": false,
+                "max": 50,
+                "min": 0
+              },
+              "style": {
+                "classes": ""
+              },
+              "tick": {
+                "color": "#757A7F",
+                "count": "Auto",
+                "label": {
+                  "font": {
+                    "color": "#757A7F",
+                    "size": 10
+                  },
+                  "format": "Auto",
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                "style": {
+                  "classes": ""
+                }
+              },
+              "width": 60
+            },
+            {
+              "color": "#757A7F",
+              "dataFormat": "0,0.##",
+              "grid": {
+                "color": "",
+                "dashArray": 0,
+                "opacity": 0.9,
+                "style": {
+                  "classes": ""
+                },
+                "visible": false
+              },
+              "label": {
+                "font": {
+                  "color": "#757A7F",
+                  "size": 10
+                },
+                "offset": 0,
+                "style": {
+                  "classes": ""
+                },
+                "text": "Humidity / Light (%)"
+              },
+              "name": "Pct",
+              "position": "left",
+              "range": {
+                "auto": false,
+                "max": 100,
+                "min": 0
+              },
+              "style": {
+                "classes": ""
+              },
+              "tick": {
+                "color": "#757A7F",
+                "count": "Auto",
+                "label": {
+                  "font": {
+                    "color": "#757A7F",
+                    "size": 10
+                  },
+                  "format": "Auto",
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                "style": {
+                  "classes": ""
+                }
+              },
+              "width": 60
+            }
+          ],
+          "config": {
+            "measureOfTime": "minutes",
+            "rangeEndDate": {
+              "$": [
+                "ts",
+                0,
+                1795087179915
+              ],
+              "$ts": 1795087177911
+            },
+            "rangeStartDate": {
+              "$": [
+                "ts",
+                0,
+                1795087179915
+              ],
+              "$ts": 1795086579911
+            },
+            "unitOfTime": 10
+          },
+          "interaction": {
+            "chartZoomLevel": 1,
+            "rangeZoomLevel": 1
+          },
+          "pens": [
+            {
+              "axis": "Temp",
+              "data": {
+                "aggregateMode": "default"
+              },
+              "display": {
+                "breakLine": true,
+                "interpolation": "curveLinear",
+                "radius": 3,
+                "styles": {
+                  "highlighted": {
+                    "fill": {
+                      "color": "#63BEA2",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#63BEA2",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1
+                    }
+                  },
+                  "muted": {
+                    "fill": {
+                      "color": "#63BEA2",
+                      "opacity": 0.4
+                    },
+                    "stroke": {
+                      "color": "#63BEA2",
+                      "dashArray": 0,
+                      "opacity": 0.4,
+                      "width": 1
+                    }
+                  },
+                  "normal": {
+                    "fill": {
+                      "color": "#63BEA2",
+                      "opacity": 0.8
+                    },
+                    "stroke": {
+                      "color": "#63BEA2",
+                      "dashArray": 0,
+                      "opacity": 0.8,
+                      "width": 1
+                    }
+                  },
+                  "selected": {
+                    "fill": {
+                      "color": "#63BEA2",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#63BEA2",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1
+                    }
+                  }
+                },
+                "type": "line"
+              },
+              "enabled": true,
+              "name": "Value",
+              "plot": 0,
+              "selectable": true,
+              "visible": true
+            }
+          ]
+        },
+        "type": "ia.chart.powerchart"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "type": "ia.container.coord"
+  }
+}

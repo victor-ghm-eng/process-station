@@ -1,0 +1,14 @@
+{
+  "base": {
+    "style": {
+      "backgroundColor": "#BDBDBD",
+      "borderTopLeftRadius": "6px",
+      "borderTopRightRadius": "6px",
+      "borderBottomLeftRadius": "6px",
+      "borderBottomRightRadius": "6px",
+      "color": "#616161",
+      "fontWeight": "bold",
+      "textAlign": "center"
+    }
+  }
+}

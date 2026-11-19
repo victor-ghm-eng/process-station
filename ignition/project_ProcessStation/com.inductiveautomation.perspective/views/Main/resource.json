@@ -1,0 +1,17 @@
+{
+  "scope": "G",
+  "version": 1,
+  "restricted": false,
+  "overridable": true,
+  "files": [
+    "view.json",
+    "thumbnail.png"
+  ],
+  "attributes": {
+    "lastModification": {
+      "actor": "Victor Gabriel",
+      "timestamp": "2026-11-19T11:19:40Z"
+    },
+    "lastModificationSignature": "75b90a67eafd8975c90eca5b737bc4c65e5de1deee7e03b3a41011dcda23beb3"
+  }
+}

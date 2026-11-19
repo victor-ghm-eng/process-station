@@ -1,0 +1,19 @@
+{
+  "scope": "A",
+  "description": "",
+  "version": 1,
+  "restricted": false,
+  "overridable": true,
+  "files": [
+    "config.json"
+  ],
+  "attributes": {
+    "lastModification": {
+      "actor": "Victor Gabriel",
+      "timestamp": "2026-11-16T16:21:55Z"
+    },
+    "uuid": "6be7ad0e-b283-402e-b186-e778fd6a0d2d",
+    "lastModificationSignature": "30ab152319d48deffad717a03235280d36c20f83b65babe979fedfcb5bc74ea4",
+    "enabled": true
+  }
+}

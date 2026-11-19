@@ -1,0 +1,1114 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "height": 1018,
+      "width": 2019
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "events": {
+          "dom": {
+            "onClick": {
+              "config": {
+                "draggable": true,
+                "id": "Dq75C-5O",
+                "modal": false,
+                "overlayDismiss": false,
+                "resizable": true,
+                "showCloseIcon": true,
+                "type": "open",
+                "viewParams": {
+                  "udtPath": "[default]ProcessStation/TT101"
+                },
+                "viewPath": "Popups/SensorDetail",
+                "viewportBound": false
+              },
+              "scope": "C",
+              "type": "popup"
+            }
+          }
+        },
+        "meta": {
+          "name": "Thermometer"
+        },
+        "position": {
+          "height": 260.02,
+          "width": 101.98,
+          "x": 680.6274862670898,
+          "y": 131.98499389648435
+        },
+        "propConfig": {
+          "props.intervals[0].high": {
+            "binding": {
+              "config": {
+                "expression": "{[default]ProcessStation/Status/Setpoint} + 3"
+              },
+              "type": "expr"
+            }
+          },
+          "props.intervals[1].low": {
+            "binding": {
+              "config": {
+                "expression": "{[default]ProcessStation/Status/Setpoint} + 3"
+              },
+              "type": "expr"
+            }
+          },
+          "props.value": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "[default]ProcessStation/Status/Temperature"
+              },
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "axisLabelColor": "#424242",
+          "highBound": 50,
+          "intervals": [
+            {
+              "color": "#E0E0E0",
+              "low": 0
+            },
+            {
+              "color": "#c62828",
+              "high": 50
+            }
+          ],
+          "mercuryColor": "#616161",
+          "strokeWidth": 5,
+          "thermometerColor": "#BDBDBD",
+          "valueFontColor": "#212121"
+        },
+        "type": "ia.display.thermometer"
+      },
+      {
+        "meta": {
+          "name": "SimpleGauge",
+          "tooltip": {
+            "text": "Humidity"
+          }
+        },
+        "position": {
+          "height": 174.98,
+          "rotate": {
+            "anchor": "50% 75%"
+          },
+          "width": 209.96,
+          "x": 340,
+          "y": 360
+        },
+        "propConfig": {
+          "props.value": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "[default]ProcessStation/Status/Humidity"
+              },
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "arc": {
+            "color": "#616161"
+          },
+          "arcBackground": {
+            "color": "#3A505C"
+          },
+          "endAngle": 405,
+          "label": {
+            "offsetY": 12
+          },
+          "startAngle": 135
+        },
+        "type": "ia.chart.simple-gauge"
+      },
+      {
+        "meta": {
+          "name": "Label"
+        },
+        "position": {
+          "height": 36.97,
+          "width": 69.94,
+          "x": 410,
+          "y": 330
+        },
+        "props": {
+          "text": "Humidity"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_0"
+        },
+        "position": {
+          "height": 36.97,
+          "width": 40.04,
+          "x": 422,
+          "y": 85
+        },
+        "props": {
+          "text": "Light"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "SimpleGauge_0",
+          "tooltip": {
+            "text": "Humidity"
+          }
+        },
+        "position": {
+          "height": 174.98,
+          "rotate": {
+            "anchor": "50% 75%"
+          },
+          "width": 209.96,
+          "x": 340,
+          "y": 115
+        },
+        "propConfig": {
+          "props.value": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "[default]ProcessStation/Status/Light"
+              },
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "arc": {
+            "color": "#616161"
+          },
+          "arcBackground": {
+            "color": "#454324"
+          },
+          "endAngle": 405,
+          "label": {
+            "offsetY": 12
+          },
+          "startAngle": 135
+        },
+        "type": "ia.chart.simple-gauge"
+      },
+      {
+        "meta": {
+          "name": "Label_2"
+        },
+        "position": {
+          "height": 31.99,
+          "width": 101.04,
+          "x": 667.56,
+          "y": 85
+        },
+        "props": {
+          "text": "Temperature"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "EmbeddedView"
+        },
+        "position": {
+          "height": 40.04,
+          "width": 120,
+          "x": 80,
+          "y": 340
+        },
+        "props": {
+          "params": {
+            "label": "RELAY",
+            "onClass": "Indicator/On",
+            "tagPath": "[default]ProcessStation/Status/Relay"
+          },
+          "path": "StatusIndicator"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "EmbeddedView_0"
+        },
+        "position": {
+          "height": 40.04,
+          "width": 120,
+          "x": 80,
+          "y": 410
+        },
+        "props": {
+          "params": {
+            "label": "AUTO",
+            "onClass": "Indicator/On",
+            "tagPath": "[default]ProcessStation/Status/ModeAuto"
+          },
+          "path": "StatusIndicator"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "EmbeddedView_1"
+        },
+        "position": {
+          "height": 40.04,
+          "width": 120,
+          "x": 80,
+          "y": 480
+        },
+        "props": {
+          "params": {
+            "label": "RUN",
+            "onClass": "Indicator/On",
+            "tagPath": "[default]ProcessStation/Status/Running"
+          },
+          "path": "StatusIndicator"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "EmbeddedView_2"
+        },
+        "position": {
+          "height": 40.04,
+          "width": 120,
+          "x": 80,
+          "y": 270
+        },
+        "props": {
+          "params": {
+            "label": "ALARM",
+            "onClass": "Indicator/Alarm",
+            "tagPath": "[default]ProcessStation/TT101/Value/Alarms.HasActive"
+          },
+          "path": "StatusIndicator"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "EmbeddedView_3"
+        },
+        "position": {
+          "height": 40.04,
+          "width": 120,
+          "x": 80,
+          "y": 130
+        },
+        "props": {
+          "params": {
+            "label": "OBSTACLE",
+            "onClass": "Indicator/On",
+            "tagPath": "[default]ProcessStation/Status/Obstacle"
+          },
+          "path": "StatusIndicator"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "EmbeddedView_4"
+        },
+        "position": {
+          "height": 40.04,
+          "width": 120,
+          "x": 80,
+          "y": 200
+        },
+        "props": {
+          "params": {
+            "label": "SENSOR OK",
+            "onClass": "Indicator/On",
+            "tagPath": "[default]ProcessStation/Status/SensorOK"
+          },
+          "path": "StatusIndicator"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Label_3"
+        },
+        "position": {
+          "height": 31.99,
+          "width": 510,
+          "x": 800,
+          "y": 10.03
+        },
+        "props": {
+          "text": "Process Station - Overview",
+          "textStyle": {
+            "fontSize": 40
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_1"
+        },
+        "position": {
+          "height": 31.99,
+          "width": 139,
+          "x": 662.0824992370606,
+          "y": 418.06750228881833
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "expression": "'SP: ' + numberFormat({[default]ProcessStation/Status/Setpoint}, '0.0') + ' °C'"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "EmbeddedView_5"
+        },
+        "position": {
+          "height": 40.04,
+          "width": 120,
+          "x": 1072,
+          "y": 200
+        },
+        "props": {
+          "params": {
+            "label": "RESET",
+            "onClass": "Command/Button",
+            "tagPath": "[default]ProcessStation/Commands/ResetCmd"
+          },
+          "path": "CommandButton"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "EmbeddedView_6"
+        },
+        "position": {
+          "height": 40.04,
+          "width": 120,
+          "x": 1072,
+          "y": 340
+        },
+        "props": {
+          "params": {
+            "label": "RELAY OFF",
+            "onClass": "Command/Button",
+            "tagPath": "[default]ProcessStation/Commands/RelayCmd",
+            "value": 2
+          },
+          "path": "CommandButton"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "EmbeddedView_7"
+        },
+        "position": {
+          "height": 40.04,
+          "width": 120,
+          "x": 918,
+          "y": 340
+        },
+        "props": {
+          "params": {
+            "label": "RELAY ON",
+            "onClass": "Command/Button",
+            "tagPath": "[default]ProcessStation/Commands/RelayCmd",
+            "value": 1
+          },
+          "path": "CommandButton"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "EmbeddedView_8"
+        },
+        "position": {
+          "height": 40.04,
+          "width": 120,
+          "x": 918,
+          "y": 200
+        },
+        "props": {
+          "params": {
+            "label": "MUTE",
+            "onClass": "Command/Button",
+            "tagPath": "[default]ProcessStation/Commands/MuteCmd"
+          },
+          "path": "CommandButton"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "EmbeddedView_9"
+        },
+        "position": {
+          "height": 40.04,
+          "width": 120,
+          "x": 918,
+          "y": 270
+        },
+        "props": {
+          "params": {
+            "label": "AUTO",
+            "onClass": "Command/Button",
+            "tagPath": "[default]ProcessStation/Commands/ModeCmd",
+            "value": "1"
+          },
+          "path": "CommandButton"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "EmbeddedView_10"
+        },
+        "position": {
+          "height": 40.04,
+          "width": 120,
+          "x": 918,
+          "y": 130
+        },
+        "props": {
+          "params": {
+            "label": "START",
+            "onClass": "Command/Button",
+            "tagPath": "[default]ProcessStation/Commands/RunCmd",
+            "value": "1"
+          },
+          "path": "CommandButton"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "EmbeddedView_11"
+        },
+        "position": {
+          "height": 40.04,
+          "width": 120,
+          "x": 1072,
+          "y": 270
+        },
+        "props": {
+          "params": {
+            "label": "MANUAL",
+            "onClass": "Command/Button",
+            "tagPath": "[default]ProcessStation/Commands/ModeCmd",
+            "value": "2"
+          },
+          "path": "CommandButton"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "EmbeddedView_12"
+        },
+        "position": {
+          "height": 40.04,
+          "width": 120,
+          "x": 1072,
+          "y": 130
+        },
+        "props": {
+          "params": {
+            "label": "STOP",
+            "onClass": "Command/Button",
+            "tagPath": "[default]ProcessStation/Commands/RunCmd",
+            "value": "2"
+          },
+          "path": "CommandButton"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "EmbeddedView_13"
+        },
+        "position": {
+          "height": 40.04,
+          "width": 120,
+          "x": 918,
+          "y": 410
+        },
+        "props": {
+          "params": {
+            "label": "TEST",
+            "onClass": "Command/Button",
+            "tagPath": "[default]ProcessStation/Commands/TestCmd"
+          },
+          "path": "CommandButton"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "config": {
+                "script": "\tsystem.tag.writeBlocking(['[default]ProcessStation/Commands/SetpointWrite'], [self.props.value])"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "NumericEntryField"
+        },
+        "position": {
+          "height": 31.99,
+          "width": 150.03,
+          "x": 650.133,
+          "y": 467.6137511444092
+        },
+        "propConfig": {
+          "props.value": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "[default]ProcessStation/Status/Setpoint"
+              },
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "mode": "protected"
+        },
+        "type": "ia.input.numeric-entry-field"
+      },
+      {
+        "meta": {
+          "name": "PowerChart"
+        },
+        "position": {
+          "height": 475,
+          "width": 750,
+          "x": 1269.05,
+          "y": 65.99
+        },
+        "props": {
+          "axes": [
+            {
+              "color": "#757A7F",
+              "dataFormat": "0,0.##",
+              "grid": {
+                "color": "",
+                "dashArray": 0,
+                "opacity": 0.9,
+                "style": {
+                  "classes": ""
+                },
+                "visible": false
+              },
+              "label": {
+                "font": {
+                  "color": "#757A7F",
+                  "size": 10
+                },
+                "offset": 0,
+                "style": {
+                  "classes": ""
+                },
+                "text": "Temperature (ºC)"
+              },
+              "name": "Temp",
+              "position": "left",
+              "range": {
+                "auto": false,
+                "max": 50,
+                "min": 0
+              },
+              "style": {
+                "classes": ""
+              },
+              "tick": {
+                "color": "#757A7F",
+                "count": "Auto",
+                "label": {
+                  "font": {
+                    "color": "#757A7F",
+                    "size": 10
+                  },
+                  "format": "Auto",
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                "style": {
+                  "classes": ""
+                }
+              },
+              "width": 60
+            },
+            {
+              "color": "#757A7F",
+              "dataFormat": "0,0.##",
+              "grid": {
+                "color": "",
+                "dashArray": 0,
+                "opacity": 0.9,
+                "style": {
+                  "classes": ""
+                },
+                "visible": false
+              },
+              "label": {
+                "font": {
+                  "color": "#757A7F",
+                  "size": 10
+                },
+                "offset": 0,
+                "style": {
+                  "classes": ""
+                },
+                "text": "Humidity / Light (%)"
+              },
+              "name": "Pct",
+              "position": "left",
+              "range": {
+                "auto": false,
+                "max": 100,
+                "min": 0
+              },
+              "style": {
+                "classes": ""
+              },
+              "tick": {
+                "color": "#757A7F",
+                "count": "Auto",
+                "label": {
+                  "font": {
+                    "color": "#757A7F",
+                    "size": 10
+                  },
+                  "format": "Auto",
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                "style": {
+                  "classes": ""
+                }
+              },
+              "width": 60
+            }
+          ],
+          "config": {
+            "measureOfTime": "minutes",
+            "rangeEndDate": {
+              "$": [
+                "ts",
+                0,
+                1795087180106
+              ],
+              "$ts": 1795087178098
+            },
+            "rangeStartDate": {
+              "$": [
+                "ts",
+                0,
+                1795087180106
+              ],
+              "$ts": 1795086580098
+            },
+            "unitOfTime": 10
+          },
+          "interaction": {
+            "chartZoomLevel": 1,
+            "rangeZoomLevel": 1
+          },
+          "legend": {
+            "visible": true
+          },
+          "pens": [
+            {
+              "axis": "Pct",
+              "data": {
+                "aggregateMode": "default",
+                "source": "histprov:Sample_SQLite_Database:/drv:ignition-desktop-3luhgqe:default:/tag:processstation/status/humidity"
+              },
+              "display": {
+                "breakLine": true,
+                "interpolation": "curveLinear",
+                "radius": 3,
+                "styles": {
+                  "highlighted": {
+                    "fill": {
+                      "color": "#63BEA2",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#63BEA2",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1
+                    }
+                  },
+                  "muted": {
+                    "fill": {
+                      "color": "#63BEA2",
+                      "opacity": 0.4
+                    },
+                    "stroke": {
+                      "color": "#63BEA2",
+                      "dashArray": 0,
+                      "opacity": 0.4,
+                      "width": 1
+                    }
+                  },
+                  "normal": {
+                    "fill": {
+                      "color": "#63BEA2",
+                      "opacity": 0.8
+                    },
+                    "stroke": {
+                      "color": "#757575",
+                      "dashArray": 0,
+                      "opacity": 0.8,
+                      "width": 1
+                    }
+                  },
+                  "selected": {
+                    "fill": {
+                      "color": "#63BEA2",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#63BEA2",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1
+                    }
+                  }
+                },
+                "type": "line"
+              },
+              "enabled": true,
+              "name": "Humidity",
+              "plot": 0,
+              "selectable": true,
+              "visible": true
+            },
+            {
+              "axis": "Pct",
+              "data": {
+                "aggregateMode": "default",
+                "source": "histprov:Sample_SQLite_Database:/drv:ignition-desktop-3luhgqe:default:/tag:processstation/status/light"
+              },
+              "display": {
+                "breakLine": true,
+                "interpolation": "curveLinear",
+                "radius": 3,
+                "styles": {
+                  "highlighted": {
+                    "fill": {
+                      "color": "#FC8D62",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#FC8D62",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1
+                    }
+                  },
+                  "muted": {
+                    "fill": {
+                      "color": "#FC8D62",
+                      "opacity": 0.4
+                    },
+                    "stroke": {
+                      "color": "#FC8D62",
+                      "dashArray": 0,
+                      "opacity": 0.4,
+                      "width": 1
+                    }
+                  },
+                  "normal": {
+                    "fill": {
+                      "color": "#FC8D62",
+                      "opacity": 0.8
+                    },
+                    "stroke": {
+                      "color": "#BDBDBD",
+                      "dashArray": 0,
+                      "opacity": 0.8,
+                      "width": 1
+                    }
+                  },
+                  "selected": {
+                    "fill": {
+                      "color": "#FC8D62",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#FC8D62",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1
+                    }
+                  }
+                },
+                "type": "line"
+              },
+              "enabled": true,
+              "name": "Light",
+              "plot": 0,
+              "selectable": true,
+              "visible": true
+            },
+            {
+              "axis": "Temp",
+              "data": {
+                "aggregateMode": "default",
+                "source": "histprov:Sample_SQLite_Database:/drv:ignition-desktop-3luhgqe:default:/tag:processstation/status/setpoint"
+              },
+              "display": {
+                "breakLine": true,
+                "interpolation": "curveLinear",
+                "radius": 3,
+                "styles": {
+                  "highlighted": {
+                    "fill": {
+                      "color": "#8DA0CB",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#8DA0CB",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1
+                    }
+                  },
+                  "muted": {
+                    "fill": {
+                      "color": "#8DA0CB",
+                      "opacity": 0.4
+                    },
+                    "stroke": {
+                      "color": "#8DA0CB",
+                      "dashArray": 0,
+                      "opacity": 0.4,
+                      "width": 1
+                    }
+                  },
+                  "normal": {
+                    "fill": {
+                      "color": "#8DA0CB",
+                      "opacity": 0.8
+                    },
+                    "stroke": {
+                      "color": "#1565C0",
+                      "dashArray": 5,
+                      "opacity": 1,
+                      "width": 2
+                    }
+                  },
+                  "selected": {
+                    "fill": {
+                      "color": "#8DA0CB",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#8DA0CB",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1
+                    }
+                  }
+                },
+                "type": "line"
+              },
+              "enabled": true,
+              "name": "Setpoint",
+              "plot": 0,
+              "selectable": true,
+              "visible": true
+            },
+            {
+              "axis": "Temp",
+              "data": {
+                "aggregateMode": "default",
+                "source": "histprov:Sample_SQLite_Database:/drv:ignition-desktop-3luhgqe:default:/tag:processstation/status/temperature"
+              },
+              "display": {
+                "breakLine": true,
+                "interpolation": "curveLinear",
+                "radius": 3,
+                "styles": {
+                  "highlighted": {
+                    "fill": {
+                      "color": "#E78AC3",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#E78AC3",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1
+                    }
+                  },
+                  "muted": {
+                    "fill": {
+                      "color": "#E78AC3",
+                      "opacity": 0.4
+                    },
+                    "stroke": {
+                      "color": "#E78AC3",
+                      "dashArray": 0,
+                      "opacity": 0.4,
+                      "width": 1
+                    }
+                  },
+                  "normal": {
+                    "fill": {
+                      "color": "#E78AC3",
+                      "opacity": 0.8
+                    },
+                    "stroke": {
+                      "color": "#212121",
+                      "dashArray": 0,
+                      "opacity": 0.8,
+                      "width": 2
+                    }
+                  },
+                  "selected": {
+                    "fill": {
+                      "color": "#E78AC3",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#E78AC3",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1
+                    }
+                  }
+                },
+                "type": "line"
+              },
+              "enabled": true,
+              "name": "Temperature",
+              "plot": 0,
+              "selectable": true,
+              "visible": true
+            }
+          ]
+        },
+        "type": "ia.chart.powerchart"
+      },
+      {
+        "meta": {
+          "name": "AlarmStatusTable"
+        },
+        "position": {
+          "height": 499,
+          "width": 1989,
+          "x": 30,
+          "y": 593
+        },
+        "props": {
+          "filters": {
+            "active": {
+              "conditions": {
+                "source": "*ProcessStation*"
+              }
+            }
+          }
+        },
+        "type": "ia.display.alarmstatustable"
+      },
+      {
+        "meta": {
+          "name": "Label_4"
+        },
+        "position": {
+          "height": 36.97,
+          "width": 40.04,
+          "x": 113,
+          "y": 84.9625015258789
+        },
+        "props": {
+          "text": "Status"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_5"
+        },
+        "position": {
+          "height": 36.97,
+          "width": 40.04,
+          "x": 1017.5,
+          "y": 84.92500152587891
+        },
+        "props": {
+          "text": "Commands"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "EmbeddedView_LocalAlarm"
+        },
+        "position": {
+          "height": 40.04,
+          "width": 120,
+          "x": 80,
+          "y": 550
+        },
+        "props": {
+          "params": {
+            "label": "LOCAL ALARM",
+            "onClass": "Indicator/Alarm",
+            "tagPath": "[default]ProcessStation/Status/Alarm"
+          },
+          "path": "StatusIndicator"
+        },
+        "type": "ia.display.view"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "position": {
+      "x": -26,
+      "y": -16
+    },
+    "props": {
+      "style": {
+        "backgroundColor": "#e0e0e0"
+      }
+    },
+    "type": "ia.container.coord"
+  }
+}

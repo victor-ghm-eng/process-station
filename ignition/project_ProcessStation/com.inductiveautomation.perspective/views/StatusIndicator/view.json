@@ -1,0 +1,73 @@
+{
+  "custom": {},
+  "params": {
+    "label": "RELAY",
+    "onClass": "Indicator/On",
+    "tagPath": "[default]ProcessStation/Status/Relay"
+  },
+  "propConfig": {
+    "params.label": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.onClass": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.tagPath": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 40,
+      "width": 120
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Label"
+        },
+        "position": {
+          "basis": "32px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.style.classes": {
+            "binding": {
+              "config": {
+                "expression": "if(tag({view.params.tagPath}), {view.params.onClass}, \u0027Indicator/Off\u0027)"
+              },
+              "type": "expr"
+            }
+          },
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "view.params.label"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {},
+          "textStyle": {
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

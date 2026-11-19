@@ -1,0 +1,37 @@
+# Local media and databases (not part of this repo)
+*.mp4
+*.mov
+*.wav
+*.m4a
+*.mp3
+*.f32
+*.db
+*.sqlite
+*.sqlite3
+
+# Secrets, credentials and local machine state
+.env
+.env.*
+*.secret
+*.pem
+*.key
+*.pfx
+*.p12
+id_rsa*
+*credentials*
+*gateway*backup*
+*.gwbk
+
+# Dependencies and tooling
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# OS and editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp

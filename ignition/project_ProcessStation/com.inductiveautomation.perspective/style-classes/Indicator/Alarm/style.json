@@ -1,0 +1,27 @@
+{
+  "base": {
+    "animation": {
+      "duration": "1s",
+      "keyframes": {
+        "0%": {
+          "backgroundColor": "#C62828",
+          "borderTopLeftRadius": "6px",
+          "borderTopRightRadius": "6px",
+          "borderBottomLeftRadius": "6px",
+          "borderBottomRightRadius": "6px",
+          "color": "#ffffff",
+          "fontWeight": "bold"
+        },
+        "100%": {
+          "backgroundColor": "#7f1d1d",
+          "borderTopLeftRadius": "6px",
+          "borderTopRightRadius": "6px",
+          "borderBottomLeftRadius": "6px",
+          "borderBottomRightRadius": "6px",
+          "color": "#ffffff",
+          "fontWeight": "bold"
+        }
+      }
+    }
+  }
+}

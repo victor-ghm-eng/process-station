@@ -1,0 +1,275 @@
+{
+  "name": "ProcessStation",
+  "tagType": "Folder",
+  "tags": [
+    {
+      "name": "Status",
+      "tagType": "Folder",
+      "tags": [
+        {
+          "dataType": "Int2",
+          "documentation": "Light level from the LDR",
+          "engUnit": "%",
+          "historyEnabled": true,
+          "historyProvider": "Sample_SQLite_Database",
+          "historySampleRate": 1,
+          "name": "Light",
+          "opcItemPath": "ns=1;s=[ProcessStation]1.HR2",
+          "opcServer": "Ignition OPC UA Server",
+          "readOnly": true,
+          "sampleMode": "Periodic",
+          "tagType": "AtomicTag",
+          "valueSource": "opc"
+        },
+        {
+          "dataType": "Boolean",
+          "documentation": "Run status",
+          "name": "Running",
+          "opcItemPath": "ns=1;s=[ProcessStation]1.HR8",
+          "opcServer": "Ignition OPC UA Server",
+          "readOnly": true,
+          "tagType": "AtomicTag",
+          "valueSource": "opc"
+        },
+        {
+          "dataType": "Float4",
+          "documentation": "Process value from the DHT11",
+          "engUnit": "°C",
+          "formatString": "#,##0.0",
+          "historyEnabled": true,
+          "historyProvider": "Sample_SQLite_Database",
+          "historySampleRate": 1,
+          "name": "Temperature",
+          "opcItemPath": "ns=1;s=[ProcessStation]1.HR0",
+          "opcServer": "Ignition OPC UA Server",
+          "rawHigh": 10.0,
+          "rawLow": 0.0,
+          "readOnly": true,
+          "sampleMode": "Periodic",
+          "scaleMode": "Linear",
+          "scaledHigh": 1.0,
+          "scaledLow": 0.0,
+          "tagType": "AtomicTag",
+          "valueSource": "opc"
+        },
+        {
+          "dataType": "Boolean",
+          "documentation": "DHT11 reading valid",
+          "name": "SensorOK",
+          "opcItemPath": "ns=1;s=[ProcessStation]1.HR9",
+          "opcServer": "Ignition OPC UA Server",
+          "readOnly": true,
+          "tagType": "AtomicTag",
+          "valueSource": "opc"
+        },
+        {
+          "dataType": "Int4",
+          "documentation": "Increments every second while the link is alive",
+          "name": "Heartbeat",
+          "opcItemPath": "ns=1;s=[ProcessStation]1.HR10",
+          "opcServer": "Ignition OPC UA Server",
+          "readOnly": true,
+          "tagType": "AtomicTag",
+          "valueSource": "opc"
+        },
+        {
+          "dataType": "Float4",
+          "documentation": "Current setpoint",
+          "engUnit": "°C",
+          "formatString": "#,##0.0",
+          "historyEnabled": true,
+          "historyProvider": "Sample_SQLite_Database",
+          "historySampleRate": 1,
+          "name": "Setpoint",
+          "opcItemPath": "ns=1;s=[ProcessStation]1.HR6",
+          "opcServer": "Ignition OPC UA Server",
+          "rawHigh": 10.0,
+          "rawLow": 0.0,
+          "readOnly": true,
+          "sampleMode": "Periodic",
+          "scaleMode": "Linear",
+          "scaledHigh": 1.0,
+          "scaledLow": 0.0,
+          "tagType": "AtomicTag",
+          "valueSource": "opc"
+        },
+        {
+          "dataType": "Boolean",
+          "documentation": "KY-032 obstacle detected",
+          "name": "Obstacle",
+          "opcItemPath": "ns=1;s=[ProcessStation]1.HR3",
+          "opcServer": "Ignition OPC UA Server",
+          "readOnly": true,
+          "tagType": "AtomicTag",
+          "valueSource": "opc"
+        },
+        {
+          "dataType": "Boolean",
+          "documentation": "Relay output state",
+          "name": "Relay",
+          "opcItemPath": "ns=1;s=[ProcessStation]1.HR4",
+          "opcServer": "Ignition OPC UA Server",
+          "readOnly": true,
+          "tagType": "AtomicTag",
+          "valueSource": "opc"
+        },
+        {
+          "dataType": "Boolean",
+          "documentation": "True = AUTO, False = MANUAL",
+          "name": "ModeAuto",
+          "opcItemPath": "ns=1;s=[ProcessStation]1.HR5",
+          "opcServer": "Ignition OPC UA Server",
+          "readOnly": true,
+          "tagType": "AtomicTag",
+          "valueSource": "opc"
+        },
+        {
+          "dataType": "Int2",
+          "documentation": "Relative humidity",
+          "engUnit": "%",
+          "historyEnabled": true,
+          "historyProvider": "Sample_SQLite_Database",
+          "historySampleRate": 1,
+          "name": "Humidity",
+          "opcItemPath": "ns=1;s=[ProcessStation]1.HR1",
+          "opcServer": "Ignition OPC UA Server",
+          "readOnly": true,
+          "sampleMode": "Periodic",
+          "tagType": "AtomicTag",
+          "valueSource": "opc"
+        },
+        {
+          "alarms": [
+            {
+              "ackMode": "Manual",
+              "enabled": false,
+              "label": "High temperature (T > SP + 3 °C)",
+              "mode": "Equality",
+              "name": "HighTemperature",
+              "priority": "High",
+              "setpointA": 1.0
+            }
+          ],
+          "dataType": "Boolean",
+          "documentation": "High temperature alarm (latched)",
+          "enabled": true,
+          "name": "Alarm",
+          "opcItemPath": "ns=1;s=[ProcessStation]1.HR7",
+          "opcServer": "Ignition OPC UA Server",
+          "readOnly": true,
+          "tagType": "AtomicTag",
+          "valueSource": "opc"
+        }
+      ]
+    },
+    {
+      "name": "TT101",
+      "parameters": {
+        "basePath": {
+          "dataType": "String",
+          "value": "[default]ProcessStation/Status"
+        }
+      },
+      "tagType": "UdtInstance",
+      "tags": [
+        {
+          "name": "Value",
+          "tagType": "AtomicTag"
+        },
+        {
+          "name": "Units",
+          "tagType": "AtomicTag"
+        },
+        {
+          "name": "HighLimit",
+          "tagType": "AtomicTag"
+        },
+        {
+          "name": "Setpoint",
+          "tagType": "AtomicTag"
+        }
+      ],
+      "typeId": "AnalogSensor"
+    },
+    {
+      "name": "Commands",
+      "tagType": "Folder",
+      "tags": [
+        {
+          "dataType": "Int2",
+          "documentation": "1 = ON, 2 = OFF, MANUAL only (pulse)",
+          "name": "RelayCmd",
+          "opcItemPath": "ns=1;s=[ProcessStation]1.HR22",
+          "opcServer": "Ignition OPC UA Server",
+          "tagType": "AtomicTag",
+          "valueSource": "opc"
+        },
+        {
+          "dataType": "Int2",
+          "documentation": "1 = AUTO, 2 = MANUAL (pulse)",
+          "name": "ModeCmd",
+          "opcItemPath": "ns=1;s=[ProcessStation]1.HR21",
+          "opcServer": "Ignition OPC UA Server",
+          "tagType": "AtomicTag",
+          "valueSource": "opc"
+        },
+        {
+          "dataType": "Int2",
+          "documentation": "1 = alarm reset (pulse)",
+          "name": "ResetCmd",
+          "opcItemPath": "ns=1;s=[ProcessStation]1.HR23",
+          "opcServer": "Ignition OPC UA Server",
+          "tagType": "AtomicTag",
+          "valueSource": "opc"
+        },
+        {
+          "dataType": "Int2",
+          "documentation": "1 = output test (pulse)",
+          "name": "TestCmd",
+          "opcItemPath": "ns=1;s=[ProcessStation]1.HR26",
+          "opcServer": "Ignition OPC UA Server",
+          "tagType": "AtomicTag",
+          "valueSource": "opc"
+        },
+        {
+          "dataType": "Int2",
+          "documentation": "1 = RUN, 2 = STOP (pulse)",
+          "historyEnabled": false,
+          "historyProvider": "Sample_SQLite_Database",
+          "historySampleRate": 1,
+          "name": "RunCmd",
+          "opcItemPath": "ns=1;s=[ProcessStation]1.HR25",
+          "opcServer": "Ignition OPC UA Server",
+          "sampleMode": "Periodic",
+          "tagType": "AtomicTag",
+          "valueSource": "opc"
+        },
+        {
+          "dataType": "Float4",
+          "documentation": "Write a new setpoint in °C (sent as x10)",
+          "engUnit": "°C",
+          "formatString": "#,##0.0",
+          "name": "SetpointWrite",
+          "opcItemPath": "ns=1;s=[ProcessStation]1.HR20",
+          "opcServer": "Ignition OPC UA Server",
+          "rawHigh": 10.0,
+          "rawLow": 0.0,
+          "scaleMode": "Linear",
+          "scaledHigh": 1.0,
+          "scaledLow": 0.0,
+          "tagType": "AtomicTag",
+          "valueSource": "opc"
+        },
+        {
+          "dataType": "Int2",
+          "documentation": "1 = silence buzzer (pulse)",
+          "name": "MuteCmd",
+          "opcItemPath": "ns=1;s=[ProcessStation]1.HR24",
+          "opcServer": "Ignition OPC UA Server",
+          "tagType": "AtomicTag",
+          "valueSource": "opc"
+        }
+      ]
+    }
+  ]
+}

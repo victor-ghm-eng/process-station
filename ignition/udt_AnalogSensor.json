@@ -1,0 +1,72 @@
+{
+  "name": "_types_",
+  "tagType": "Folder",
+  "tags": [
+    {
+      "name": "AnalogSensor",
+      "parameters": {
+        "basePath": {
+          "dataType": "String",
+          "value": null
+        }
+      },
+      "tagType": "UdtType",
+      "tags": [
+        {
+          "alarms": [
+            {
+              "deadband": 0.5,
+              "deadbandMode": "Absolute",
+              "mode": "AboveValue",
+              "name": "HighTemperature",
+              "priority": "High",
+              "setpointA": {
+                "bindType": "Tag",
+                "value": "[.]HighLimit"
+              },
+              "timeOffDelaySeconds": 5.0,
+              "timeOnDelaySeconds": 2.0
+            }
+          ],
+          "dataType": "Float4",
+          "historyEnabled": true,
+          "historyProvider": "Sample_SQLite_Database",
+          "historySampleRate": 1,
+          "name": "Value",
+          "sampleMode": "Periodic",
+          "sourceTagPath": {
+            "bindType": "parameter",
+            "binding": "{basePath}/Temperature"
+          },
+          "tagType": "AtomicTag",
+          "valueSource": "reference"
+        },
+        {
+          "dataType": "String",
+          "name": "Units",
+          "tagType": "AtomicTag",
+          "value": "ºC",
+          "valueSource": "memory"
+        },
+        {
+          "dataType": "Float4",
+          "name": "Setpoint",
+          "sourceTagPath": {
+            "bindType": "parameter",
+            "binding": "{basePath}/Setpoint"
+          },
+          "tagType": "AtomicTag",
+          "valueSource": "reference"
+        },
+        {
+          "dataType": "Float4",
+          "expression": "{[.]Setpoint} + 3",
+          "name": "HighLimit",
+          "tagType": "AtomicTag",
+          "valueSource": "expr"
+        }
+      ],
+      "typeId": null
+    }
+  ]
+}

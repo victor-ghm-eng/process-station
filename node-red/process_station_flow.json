@@ -1,0 +1,133 @@
+[
+ {
+  "id": "tab_ep",
+  "type": "tab",
+  "label": "Process Station"
+ },
+ {
+  "id": "sp_com5",
+  "type": "serial-port",
+  "name": "Arduino COM5",
+  "serialport": "COM5",
+  "serialbaud": "115200",
+  "databits": "8",
+  "parity": "none",
+  "stopbits": "1",
+  "waitfor": "",
+  "dtr": "none",
+  "rts": "none",
+  "cts": "none",
+  "dsr": "none",
+  "newline": "\\n",
+  "bin": "false",
+  "out": "char",
+  "addchar": "\\n",
+  "responsetimeout": "10000"
+ },
+ {
+  "id": "sin",
+  "type": "serial in",
+  "z": "tab_ep",
+  "name": "Arduino (USB serial)",
+  "serial": "sp_com5",
+  "x": 140,
+  "y": 120,
+  "wires": [
+   [
+    "fn_mb",
+    "dbg"
+   ]
+  ]
+ },
+ {
+  "id": "fn_mb",
+  "type": "function",
+  "z": "tab_ep",
+  "name": "Modbus TCP Gateway",
+  "func": "// A line arrives from the Arduino: if it's JSON, map it to Modbus registers\nconst hr = context.get('hr');\nlet line = String(msg.payload).trim();\nif (!line.startsWith('{')) {          // '#' lines are diagnostics, not data\n    if (line) node.log('Arduino: ' + line);\n    return null;\n}\nlet d;\ntry { d = JSON.parse(line); } catch (e) { return null; }\nconst i16 = (v) => Math.round(v) & 0xFFFF;\nhr[0] = d.t === null ? 0 : i16(d.t * 10);   // temperature x10\nhr[1] = d.h === null ? 0 : i16(d.h);        // humidity %\nhr[2] = i16(d.light);                         // light %\nhr[3] = d.obst;                             // obstacle 0/1\nhr[4] = d.relay;                             // relay 0/1\nhr[5] = d.mode === 'AUTO' ? 1 : 0;          // 1 = AUTO, 0 = MANUAL\nhr[6] = i16(d.sp * 10);                     // setpoint x10\nhr[7] = d.alarm;                           // alarm 0/1\nhr[8] = d.run;                              // run 0/1\nhr[9] = d.t === null ? 0 : 1;               // DHT11 sensor OK\nhr[10] = (hr[10] + 1) & 0xFFFF;             // heartbeat counter\nnode.status({ fill: 'green', shape: 'dot', text: 'T=' + d.t + ' SP=' + d.sp + ' ' + d.mode });\nreturn null;\n",
+  "outputs": 1,
+  "timeout": 0,
+  "noerr": 0,
+  "initialize": "// Starts a Modbus TCP server (port 502, unit ID 1)\nconst hr = new Array(100).fill(0);\ncontext.set('hr', hr);\nconst sendCmd = (cmd) => node.send({ payload: cmd });\nconst vector = {\n  getHoldingRegister: (addr) => hr[addr] || 0,\n  getInputRegister:   (addr) => hr[addr] || 0,\n  setRegister: (addr, value) => {\n    const v = value & 0xFFFF;\n    const s = v > 32767 ? v - 65536 : v;\n    if (addr === 20) sendCmd('SP=' + (s / 10).toFixed(1));\n    else if (addr === 21 && v === 1) sendCmd('MODE=AUTO');\n    else if (addr === 21 && v === 2) sendCmd('MODE=MANUAL');\n    else if (addr === 22 && v === 1) sendCmd('RELAY=1');\n    else if (addr === 22 && v === 2) sendCmd('RELAY=0');\n    else if (addr === 23 && v === 1) sendCmd('RESET');\n    else if (addr === 24 && v === 1) sendCmd('MUTE');\n    else if (addr === 25 && v === 1) sendCmd('RUN=1');\n    else if (addr === 25 && v === 2) sendCmd('RUN=0');\n    else if (addr === 26 && v === 1) sendCmd('TEST');\n    hr[addr] = 0;               // command registers are pulses: reset to 0 after use\n  },\n  getCoil: () => false,\n  setCoil: () => {}\n};\nconst server = new ModbusRTU.ServerTCP(vector, { host: '0.0.0.0', port: 502, unitID: 1 });\nserver.on('socketError', (e) => node.warn('Modbus: ' + e.message));\nserver.on('initialized', () => node.status({ fill: 'green', shape: 'dot', text: 'Modbus TCP :502' }));\ncontext.set('server', server);\n",
+  "finalize": "const s = context.get('server');\nif (s) s.close(() => {});\n",
+  "libs": [
+   {
+    "var": "ModbusRTU",
+    "module": "modbus-serial"
+   }
+  ],
+  "x": 380,
+  "y": 120,
+  "wires": [
+   [
+    "sout",
+    "dbg"
+   ]
+  ]
+ },
+ {
+  "id": "sout",
+  "type": "serial out",
+  "z": "tab_ep",
+  "name": "Commands to Arduino",
+  "serial": "sp_com5",
+  "x": 640,
+  "y": 120,
+  "wires": []
+ },
+ {
+  "id": "dbg",
+  "type": "debug",
+  "z": "tab_ep",
+  "name": "Raw frames",
+  "active": false,
+  "tosidebar": true,
+  "console": false,
+  "complete": "payload",
+  "x": 620,
+  "y": 200,
+  "wires": []
+ },
+ {
+  "id": "inj",
+  "type": "inject",
+  "z": "tab_ep",
+  "name": "Test: run output check",
+  "props": [
+   {
+    "p": "payload"
+   }
+  ],
+  "payload": "TEST",
+  "payloadType": "str",
+  "repeat": "",
+  "once": false,
+  "x": 390,
+  "y": 200,
+  "wires": [
+   [
+    "sout"
+   ]
+  ]
+ },
+ {
+  "id": "cmt1",
+  "type": "comment",
+  "z": "tab_ep",
+  "name": "Read registers HR0-HR10 (click for details)",
+  "info": "### Read registers (Arduino to Ignition)\nUpdated once per second from the Arduino's JSON frame.\n\n| Register | Signal | Scaling |\n|---|---|---|\n| HR0 | Temperature | x10 (245 = 24.5 °C) |\n| HR1 | Humidity | % |\n| HR2 | Light level | % |\n| HR3 | Obstacle detected | 0/1 |\n| HR4 | Relay output | 0/1 |\n| HR5 | Mode | 1 = AUTO, 0 = MANUAL |\n| HR6 | Setpoint | x10 |\n| HR7 | High temperature alarm | 0/1 |\n| HR8 | Run status | 0/1 |\n| HR9 | DHT11 sensor OK | 0/1 |\n| HR10 | Heartbeat counter | increments every second |",
+  "x": 220,
+  "y": 40,
+  "wires": []
+ },
+ {
+  "id": "cmt2",
+  "type": "comment",
+  "z": "tab_ep",
+  "name": "Command registers HR20-HR26 (click for details)",
+  "info": "### Command registers (Ignition to Arduino)\nThese work as pulses: write a value, the gateway sends the command over serial, and the register goes back to 0.\n\n| Register | Command | Values |\n|---|---|---|\n| HR20 | New setpoint | x10 (275 = 27.5 °C) |\n| HR21 | Mode | 1 = AUTO, 2 = MANUAL |\n| HR22 | Relay (MANUAL only) | 1 = ON, 2 = OFF |\n| HR23 | Alarm reset | 1 |\n| HR24 | Silence buzzer (MUTE) | 1 |\n| HR25 | Run / stop | 1 = RUN, 2 = STOP |\n| HR26 | Output test | 1 |",
+  "x": 580,
+  "y": 40,
+  "wires": []
+ }
+]

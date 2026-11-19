@@ -1,0 +1,16 @@
+{
+  "scope": "G",
+  "version": 1,
+  "restricted": false,
+  "overridable": true,
+  "files": [
+    "config.json"
+  ],
+  "attributes": {
+    "lastModificationSignature": "85e368cf243261f47693ae408bf6db0331b2970cbda72a57936b5b94110af2a0",
+    "lastModification": {
+      "actor": "Victor Gabriel",
+      "timestamp": "2026-11-16T16:43:13Z"
+    }
+  }
+}
